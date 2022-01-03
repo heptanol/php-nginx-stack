@@ -7,7 +7,7 @@ RUN set -ex \
     postgresql-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql
-
+COPY ./conf/php.ini /usr/local/etc/php/
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 CMD composer install ;  php-fpm
