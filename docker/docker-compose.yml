@@ -19,6 +19,7 @@ services:
         volumes:
             - ${APP_FOLDER}:/var/www
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./logs:/var/log
         depends_on:
             - php
         ports:
