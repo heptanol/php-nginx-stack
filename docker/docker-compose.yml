@@ -23,3 +23,18 @@ services:
             - php
         ports:
             - "8181:80"
+
+    postgres:
+        container_name: "postgres"
+        image: postgres:${POSTGRES_VERSION:-13}-alpine
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB:-app}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-ChangeMe}
+            POSTGRES_USER: ${POSTGRES_USER:-symfony}
+        volumes:
+            - db-data:/var/lib/postgresql/data:rw
+        ports:
+            -  "5442:5432"
+
+volumes:
+    db-data:
